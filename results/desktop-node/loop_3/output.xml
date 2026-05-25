@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.12.0 on win32)" generated="2026-04-14T12:52:10.038514" rpa="false" schemaversion="5">
+<suite id="s1" name="Connect-Disconnect" source="C:\Users\tester\robot-tests\connect-disconnect.robot">
+<kw name="Open Browser To Login Page" owner="keywords" type="SETUP">
+<kw name="Set Environment Variable" owner="OperatingSystem">
+<msg time="2026-04-14T12:52:10.244714" level="INFO">Environment variable 'NO_PROXY' set to value '127.0.0.1,localhost'.</msg>
+<arg>NO_PROXY</arg>
+<arg>127.0.0.1,localhost</arg>
+<doc>Sets an environment variable to a specified value.</doc>
+<status status="PASS" start="2026-04-14T12:52:10.244714" elapsed="0.000000"/>
+</kw>
+<kw name="Set Environment Variable" owner="OperatingSystem">
+<msg time="2026-04-14T12:52:10.244714" level="INFO">Environment variable 'NODE_TLS_REJECT_UNAUTHORIZED' set to value '0'.</msg>
+<arg>NODE_TLS_REJECT_UNAUTHORIZED</arg>
+<arg>0</arg>
+<doc>Sets an environment variable to a specified value.</doc>
+<status status="PASS" start="2026-04-14T12:52:10.244714" elapsed="0.000000"/>
+</kw>
+<kw name="New Browser" owner="Browser">
+<msg time="2026-04-14T12:52:10.244714" level="INFO">{"browser": "chromium", "headless": false, "args": ["--ignore-certificate-errors"], "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 2000.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\tester\\robot-tests\\results\\loop_3\\browser\\traces\\temp\\31384d38-8862-4f73-92a0-62231339a7e1"}</msg>
+<msg time="2026-04-14T12:52:10.260653" level="INFO">Starting Browser process C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\index.js using at 127.0.0.1:53015</msg>
+<msg time="2026-04-14T12:52:11.483441" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"args":["--ignore-certificate-errors"],"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":2000,"timeout":30000,"tracesDir":"C:\\Users\\tester\\robot-tests\\results\\loop_3\\browser\\traces\\temp\\31384d38-8862-4f73-92a0-62231339a7e1"}</msg>
+<arg>${BROWSER}</arg>
+<arg>headless=False</arg>
+<arg>slowMo=2000ms</arg>
+<arg>args=["--ignore-certificate-errors"]</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2026-04-14T12:52:10.244714" elapsed="1.238727"/>
+</kw>
+<kw name="New Context" owner="Browser">
+<msg time="2026-04-14T12:52:11.487457" level="INFO">{
+  "acceptDownloads": true,
+  "bypassCSP": false,
+  "forcedColors": "none",
+  "ignoreHTTPSErrors": true,
+  "javaScriptEnabled": true,
+  "offline": false,
+  "reducedMotion": "no-preference",
+  "serviceWorkers": "allow",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  }
+}</msg>
+<msg time="2026-04-14T12:52:11.508776" level="INFO">Successfully created context. </msg>
+<msg time="2026-04-14T12:52:11.508776" level="INFO">{'acceptDownloads': True, 'bypassCSP': False, 'forcedColors': 'none', 'ignoreHTTPSErrors': True, 'javaScriptEnabled': True, 'offline': False, 'reducedMotion': 'no-preference', 'serviceWorkers': 'allow', 'viewport': {'width': 1280, 'height': 720}}</msg>
+<arg>ignoreHTTPSErrors=True</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new BrowserContext with specified options.</doc>
+<status status="PASS" start="2026-04-14T12:52:11.485449" elapsed="0.023327"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2026-04-14T12:52:14.285256" level="INFO">Successfully initialized new page object and opened url: https://192.168.189.173/login</msg>
+<arg>${LOGIN_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2026-04-14T12:52:11.508776" elapsed="2.776480"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-04-14T12:52:14.304612" level="INFO">Waited for Element with selector id=loginUsernameInput at state visible</msg>
+<arg>${USERNAME_FIELD}</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-04-14T12:52:14.285256" elapsed="0.019356"/>
+</kw>
+<status status="PASS" start="2026-04-14T12:52:10.244714" elapsed="4.059898"/>
+</kw>
+<test id="s1-t1" name="Connect And Disconnect All Sources" line="9">
+<kw name="Navigate To Login Page" owner="keywords">
+<kw name="Get Page Ids" owner="Browser">
+<msg time="2026-04-14T12:52:14.347565" level="INFO">${pages} = ['page=3e04e85e-68e7-41fe-929c-32b1f5217efe']</msg>
+<var>${pages}</var>
+<tag>Assertion</tag>
+<tag>BrowserControl</tag>
+<tag>Getter</tag>
+<doc>Returns a list of page ids based on the context and browser selection.
+See `Browser, Context and Page` for more information about Page and related concepts.</doc>
+<status status="PASS" start="2026-04-14T12:52:14.321792" elapsed="0.025773"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2026-04-14T12:52:14.348565" level="INFO">Length is 1.</msg>
+<msg time="2026-04-14T12:52:14.348565" level="INFO">${count} = 1</msg>
+<var>${count}</var>
+<arg>${pages}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2026-04-14T12:52:14.347565" elapsed="0.001000"/>
+</kw>
+<if>
+<branch type="IF" condition="${count} == 0">
+<kw name="New Page" owner="Browser">
+<arg>${LOGIN_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="NOT RUN" start="2026-04-14T12:52:14.349564" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2026-04-14T12:52:14.348565" elapsed="0.000999"/>
+</branch>
+<branch type="ELSE">
+<kw name="Go To" owner="Browser">
+<msg time="2026-04-14T12:52:16.028951" level="INFO">Keyword 'Take Screenshot  fail-screenshot-{index}' could not be run on failure:
+Error: Tried to take screenshot, but no page was open.</msg>
+<msg time="2026-04-14T12:52:16.028951" level="INFO">See also file:///C:/Users/tester/robot-tests/results/loop_3/playwright-log.txt for additional details.</msg>
+<msg time="2026-04-14T12:52:16.028951" level="FAIL">Execution terminated by signal</msg>
+<arg>${LOGIN_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="FAIL" start="2026-04-14T12:52:14.349564" elapsed="1.687425">Execution terminated by signal</status>
+</kw>
+<status status="FAIL" start="2026-04-14T12:52:14.349564" elapsed="1.687425">Execution terminated by signal</status>
+</branch>
+<status status="FAIL" start="2026-04-14T12:52:14.348565" elapsed="1.688424">Execution terminated by signal</status>
+</if>
+<kw name="Wait For Elements State" owner="Browser">
+<arg>${USERNAME_FIELD}</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="NOT RUN" start="2026-04-14T12:52:16.036989" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2026-04-14T12:52:14.321792" elapsed="1.715197">Execution terminated by signal</status>
+</kw>
+<kw name="Enter Credentials" owner="keywords">
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<status status="NOT RUN" start="2026-04-14T12:52:16.036989" elapsed="0.000000"/>
+</kw>
+<kw name="Highlight Element" owner="keywords">
+<arg>${EYE_BUTTON}</arg>
+<status status="NOT RUN" start="2026-04-14T12:52:16.036989" elapsed="0.000000"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>${EYE_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="NOT RUN" start="2026-04-14T12:52:16.036989" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-04-14T12:52:16.036989" elapsed="0.000000"/>
+</kw>
+<kw name="Highlight Element" owner="keywords">
+<arg>${LOGIN_BUTTON}</arg>
+<status status="NOT RUN" start="2026-04-14T12:52:16.036989" elapsed="0.000000"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>${LOGIN_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="NOT RUN" start="2026-04-14T12:52:16.036989" elapsed="0.000000"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<arg>${DASHBOARD_HEADER}</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="NOT RUN" start="2026-04-14T12:52:16.036989" elapsed="0.000000"/>
+</kw>
+<kw name="Open Sources Pane" owner="keywords">
+<status status="NOT RUN" start="2026-04-14T12:52:16.036989" elapsed="0.000000"/>
+</kw>
+<kw name="Get Elements" owner="Browser">
+<var>${sources}</var>
+<arg>${SOURCE_CARDS}</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns a reference to Playwright [https://playwright.dev/docs/api/class-locator|Locator]
+for all matched elements by ``selector``.</doc>
+<status status="NOT RUN" start="2026-04-14T12:52:16.036989" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Found ${sources.__len__()} sources</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-04-14T12:52:16.036989" elapsed="0.000000"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get Attribute" owner="Browser">
+<var>${id}</var>
+<arg>${source}</arg>
+<arg>id</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the HTML ``attribute`` of the element found by ``selector``.</doc>
+<status status="NOT RUN" start="2026-04-14T12:52:16.036989" elapsed="0.007773"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Processing source: ${id}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-04-14T12:52:16.044762" elapsed="0.000000"/>
+</kw>
+<kw name="Connect Disconnect Source" owner="keywords">
+<arg>${source}</arg>
+<arg>${id}</arg>
+<status status="NOT RUN" start="2026-04-14T12:52:16.044762" elapsed="0.000000"/>
+</kw>
+<var name="${source}"/>
+<status status="NOT RUN" start="2026-04-14T12:52:16.036989" elapsed="0.007773"/>
+</iter>
+<var>${source}</var>
+<value>@{sources}</value>
+<status status="NOT RUN" start="2026-04-14T12:52:16.036989" elapsed="0.007773"/>
+</for>
+<kw name="Logout" owner="keywords">
+<status status="NOT RUN" start="2026-04-14T12:52:16.044762" elapsed="0.000000"/>
+</kw>
+<kw name="Take Screenshot On Failure" owner="keywords" type="TEARDOWN">
+<kw name="Run Keyword If Test Failed" owner="BuiltIn">
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2026-04-14T12:52:16.044762" level="INFO">Keyword 'Take Screenshot  fail-screenshot-{index}' could not be run on failure:
+Error: Tried to take screenshot, but no page was open.</msg>
+<msg time="2026-04-14T12:52:16.044762" level="INFO">See also file:///C:/Users/tester/robot-tests/results/loop_3/playwright-log.txt for additional details.</msg>
+<msg time="2026-04-14T12:52:16.044762" level="FAIL">Error: Tried to take screenshot, but no page was open.</msg>
+<arg>filename=failure_{index}</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="FAIL" start="2026-04-14T12:52:16.044762" elapsed="0.000000">Error: Tried to take screenshot, but no page was open.</status>
+</kw>
+<arg>Take Screenshot</arg>
+<arg>filename=failure_{index}</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="FAIL" start="2026-04-14T12:52:16.044762" elapsed="0.000000">Error: Tried to take screenshot, but no page was open.</status>
+</kw>
+<status status="FAIL" start="2026-04-14T12:52:16.044762" elapsed="0.000000">Error: Tried to take screenshot, but no page was open.</status>
+</kw>
+<doc>Login, open sources pane, dynamically find all TX cards, connect each for 5 seconds then disconnect</doc>
+<status status="FAIL" start="2026-04-14T12:52:14.304612" elapsed="1.740150">Execution terminated by signal
+
+Also teardown failed:
+Error: Tried to take screenshot, but no page was open.</status>
+</test>
+<kw name="Close Browser" owner="Browser" type="TEARDOWN">
+<msg time="2026-04-14T12:52:16.060547" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-04-14T12:52:16.060547" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2026-04-14T12:52:10.038514" elapsed="6.022033"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Connect-Disconnect" id="s1" pass="0" fail="1" skip="0">Connect-Disconnect</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

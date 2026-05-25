@@ -1,0 +1,908 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.12.10 on win32)" generated="2026-04-15T11:43:54.467423" rpa="false" schemaversion="5">
+<suite id="s1" name="RebootDeviceWebUI" source="C:\Users\rabdulla\robot-tests\RebootDeviceWebUI.robot">
+<test id="s1-t1" name="Reboot Device And Verify Recovery" line="17">
+<kw name="Get Auth Token Via API">
+<kw name="Evaluate" owner="BuiltIn">
+<arg>__import__('urllib3').disable_warnings()</arg>
+<arg>modules=urllib3</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-04-15T11:43:54.903629" elapsed="0.000999"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-04-15T11:43:54.904628" level="INFO">${base_url} = https://192.168.189.121</msg>
+<var>${base_url}</var>
+<arg>https://${DEVICE_IP}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-04-15T11:43:54.904628" elapsed="0.000000"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-04-15T11:43:54.904628" level="INFO">${auth} = ['Tester', 'Matrox1234!']</msg>
+<var>${auth}</var>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-04-15T11:43:54.904628" elapsed="0.000000"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-04-15T11:43:54.904628" level="INFO">Creating Session using : alias=avio2_auth, url=https://192.168.189.121, headers={},                     cookies={}, auth=&lt;requests.auth.HTTPBasicAuth object at 0x0000016DD81D9430&gt;, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>avio2_auth</arg>
+<arg>${base_url}</arg>
+<arg>verify=False</arg>
+<arg>auth=${auth}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-04-15T11:43:54.904628" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-04-15T11:43:54.906086" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-04-15T11:43:54.904628" elapsed="0.001458"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-04-15T11:43:55.869411" level="INFO">POST Request : url=https://192.168.189.121/auth/v1/users/login 
+ path_url=/auth/v1/users/login 
+ headers={'User-Agent': 'python-requests/2.33.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '0', 'Authorization': 'Basic VGVzdGVyOk1hdHJveDEyMzQh'} 
+ body=None 
+ </msg>
+<msg time="2026-04-15T11:43:55.869411" level="INFO">POST Response : url=https://192.168.189.121/auth/v1/users/login 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.23.4', 'Date': 'Wed, 15 Apr 2026 15:43:55 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive'} 
+ body={"accessToken":"6886B2F1EC03631A2A602F0269CBCEE5","authenticationMode":"Local","firstName":"Tester","lastName":"Tester","role":"Admin","expirationIn":259199,"expirationAt":"2026-04-18T15:43:55.8049808+00:00"} 
+ </msg>
+<msg time="2026-04-15T11:43:55.869411" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>avio2_auth</arg>
+<arg>${AUTH_ENDPOINT}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-04-15T11:43:54.906086" elapsed="0.963325"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-04-15T11:43:55.870713" level="INFO">${token} = 6886B2F1EC03631A2A602F0269CBCEE5</msg>
+<var>${token}</var>
+<arg>${response.json()}</arg>
+<arg>accessToken</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-04-15T11:43:55.870713" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-04-15T11:43:55.870713" level="INFO">Auth token retrieved successfully</msg>
+<arg>Auth token retrieved successfully</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-04-15T11:43:55.870713" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${token}</value>
+<status status="PASS" start="2026-04-15T11:43:55.870713" elapsed="0.000000"/>
+</return>
+<msg time="2026-04-15T11:43:55.870713" level="INFO">${token} = 6886B2F1EC03631A2A602F0269CBCEE5</msg>
+<var>${token}</var>
+<doc>POSTs to auth endpoint with Basic Auth and returns Bearer token</doc>
+<status status="PASS" start="2026-04-15T11:43:54.902625" elapsed="0.968088"/>
+</kw>
+<kw name="Trigger Reboot Via API">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-04-15T11:43:55.873219" level="INFO">${base_url} = https://192.168.189.121</msg>
+<var>${base_url}</var>
+<arg>https://${DEVICE_IP}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-04-15T11:43:55.872177" elapsed="0.001042"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-04-15T11:43:55.873219" level="INFO">Creating Session using : alias=avio2_mgmt, url=https://192.168.189.121, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>avio2_mgmt</arg>
+<arg>${base_url}</arg>
+<arg>verify=False</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-04-15T11:43:55.873219" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-04-15T11:43:55.873219" level="INFO">${headers} = {'Authorization': 'Bearer 6886B2F1EC03631A2A602F0269CBCEE5', 'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${token}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-04-15T11:43:55.873219" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-04-15T11:43:56.297572" level="INFO">POST Request : url=https://192.168.189.121/mgmt/v1/reboot 
+ path_url=/mgmt/v1/reboot 
+ headers={'User-Agent': 'python-requests/2.33.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer 6886B2F1EC03631A2A602F0269CBCEE5', 'Content-Type': 'application/json', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2026-04-15T11:43:56.297572" level="INFO">POST Response : url=https://192.168.189.121/mgmt/v1/reboot 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.23.4', 'Date': 'Wed, 15 Apr 2026 15:43:56 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive'} 
+ body=1 
+ </msg>
+<msg time="2026-04-15T11:43:56.297572" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>avio2_mgmt</arg>
+<arg>${REBOOT_ENDPOINT}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-04-15T11:43:55.873219" elapsed="0.424353"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-04-15T11:43:56.298793" level="INFO">Reboot triggered. Response status: 200</msg>
+<arg>Reboot triggered. Response status: ${response.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-04-15T11:43:56.297572" elapsed="0.001221"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-04-15T11:43:59.299007" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-04-15T11:43:56.298793" elapsed="3.000214"/>
+</kw>
+<arg>${token}</arg>
+<doc>POSTs to reboot endpoint using Bearer token</doc>
+<status status="PASS" start="2026-04-15T11:43:55.872177" elapsed="3.426830"/>
+</kw>
+<kw name="Wait For Device To Go Offline">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-04-15T11:43:59.300013" level="INFO">Waiting for device to go offline...</msg>
+<arg>Waiting for device to go offline...</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-04-15T11:43:59.300013" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-04-15T11:44:07.372196" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(&lt;HTTPSConnection(host='192.168.189.121', port=443) at 0x16dd77953d0&gt;, 'Connection to 192.168.189.121 timed out. (connect timeout=None)')': /mgmt/v1/healthstatus/ishealthy</msg>
+<msg time="2026-04-15T11:44:28.629770" level="WARN">Retrying (RetryAdapter(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(&lt;HTTPSConnection(host='192.168.189.121', port=443) at 0x16dd81d94c0&gt;, 'Connection to 192.168.189.121 timed out. (connect timeout=None)')': /mgmt/v1/healthstatus/ishealthy</msg>
+<msg time="2026-04-15T11:44:37.049616" level="WARN">Retrying (RetryAdapter(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPSConnection(host='192.168.189.121', port=443): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it")': /mgmt/v1/healthstatus/ishealthy</msg>
+<msg time="2026-04-15T11:44:39.085135" level="FAIL">ConnectionError: HTTPSConnectionPool(host='192.168.189.121', port=443): Max retries exceeded with url: /mgmt/v1/healthstatus/ishealthy (Caused by NewConnectionError("HTTPSConnection(host='192.168.189.121', port=443): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it"))</msg>
+<arg>avio2_mgmt</arg>
+<arg>${HEALTH_ENDPOINT}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="FAIL" start="2026-04-15T11:43:59.300013" elapsed="39.792373">ConnectionError: HTTPSConnectionPool(host='192.168.189.121', port=443): Max retries exceeded with url: /mgmt/v1/healthstatus/ishealthy (Caused by NewConnectionError("HTTPSConnection(host='192.168.189.121', port=443): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it"))</status>
+</kw>
+<msg time="2026-04-15T11:44:39.092386" level="INFO">${status} = False</msg>
+<var>${status}</var>
+<arg>GET On Session</arg>
+<arg>avio2_mgmt</arg>
+<arg>${HEALTH_ENDPOINT}</arg>
+<arg>expected_status=200</arg>
+<doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-04-15T11:43:59.300013" elapsed="39.792373"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-04-15T11:44:39.093836" level="INFO">Device is offline. Reboot confirmed started.</msg>
+<arg>Device is offline. Reboot confirmed started.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-04-15T11:44:39.093836" elapsed="0.000000"/>
+</kw>
+<return>
+<status status="PASS" start="2026-04-15T11:44:39.093836" elapsed="0.000000"/>
+</return>
+<status status="PASS" start="2026-04-15T11:44:39.093836" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2026-04-15T11:44:39.093836" elapsed="0.000000"/>
+</if>
+<kw name="Sleep" owner="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-04-15T11:44:39.093836" elapsed="0.000000"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2026-04-15T11:43:59.300013" elapsed="39.793823"/>
+</iter>
+<var>${i}</var>
+<value>12</value>
+<status status="PASS" start="2026-04-15T11:43:59.300013" elapsed="39.793823"/>
+</for>
+<kw name="Log" owner="BuiltIn">
+<arg>Warning: Device did not appear to go offline within 60s — continuing anyway</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-04-15T11:44:39.093836" elapsed="0.000000"/>
+</kw>
+<doc>Polls ishealthy until the device stops responding (confirming reboot started)</doc>
+<status status="PASS" start="2026-04-15T11:43:59.299007" elapsed="39.794829"/>
+</kw>
+<kw name="Wait For Device To Come Back Online">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-04-15T11:44:39.095334" level="INFO">Polling for device recovery (timeout: 180s)...</msg>
+<arg>Polling for device recovery (timeout: ${REBOOT_TIMEOUT})...</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-04-15T11:44:39.093836" elapsed="0.001498"/>
+</kw>
+<kw name="Get Time" owner="BuiltIn">
+<msg time="2026-04-15T11:44:39.095334" level="INFO">${start_time} = 1776267879</msg>
+<var>${start_time}</var>
+<arg>epoch</arg>
+<doc>Returns the given time in the requested format.</doc>
+<status status="PASS" start="2026-04-15T11:44:39.095334" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-04-15T11:44:39.096695" level="INFO">${elapsed} = 0</msg>
+<var>${elapsed}</var>
+<arg>int(__import__('time').time()) - ${start_time}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-04-15T11:44:39.095334" elapsed="0.001361"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-04-15T11:44:39.097854" level="INFO">Poll attempt 1 — 0s elapsed</msg>
+<arg>Poll attempt ${i+1} — ${elapsed}s elapsed</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-04-15T11:44:39.096695" elapsed="0.001159"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-04-15T11:44:41.138888" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPSConnection(host='192.168.189.121', port=443): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it")': /mgmt/v1/healthstatus/ishealthy</msg>
+<msg time="2026-04-15T11:44:49.114775" level="INFO">GET Request : url=https://192.168.189.121/mgmt/v1/healthstatus/ishealthy 
+ path_url=/mgmt/v1/healthstatus/ishealthy 
+ headers={'User-Agent': 'python-requests/2.33.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-04-15T11:44:49.114775" level="INFO">GET Response : url=https://192.168.189.121/mgmt/v1/healthstatus/ishealthy 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.23.4', 'Date': 'Wed, 15 Apr 2026 15:44:49 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive'} 
+ body=false 
+ </msg>
+<arg>avio2_mgmt</arg>
+<arg>${HEALTH_ENDPOINT}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-04-15T11:44:39.097854" elapsed="10.016921"/>
+</kw>
+<msg time="2026-04-15T11:44:49.115775" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>GET On Session</arg>
+<arg>avio2_mgmt</arg>
+<arg>${HEALTH_ENDPOINT}</arg>
+<arg>expected_status=200</arg>
+<doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-04-15T11:44:39.097854" elapsed="10.017921"/>
+</kw>
+<if>
+<branch type="IF" condition="${status}">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-04-15T11:44:50.454067" level="INFO">GET Request : url=https://192.168.189.121/mgmt/v1/healthstatus/ishealthy 
+ path_url=/mgmt/v1/healthstatus/ishealthy 
+ headers={'User-Agent': 'python-requests/2.33.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-04-15T11:44:50.454067" level="INFO">GET Response : url=https://192.168.189.121/mgmt/v1/healthstatus/ishealthy 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.23.4', 'Date': 'Wed, 15 Apr 2026 15:44:50 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'close'} 
+ body=false 
+ </msg>
+<msg time="2026-04-15T11:44:50.454067" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>avio2_mgmt</arg>
+<arg>${HEALTH_ENDPOINT}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-04-15T11:44:49.115775" elapsed="1.338292"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2026-04-15T11:44:50.455331" level="INFO">${body} = false</msg>
+<var>${body}</var>
+<arg>${response.text}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2026-04-15T11:44:50.455331" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="'${body.strip()}' == 'true'">
+<kw name="Log" owner="BuiltIn">
+<arg>Device is back online and healthy!</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-04-15T11:44:50.455331" elapsed="0.000000"/>
+</kw>
+<return>
+<status status="NOT RUN" start="2026-04-15T11:44:50.455331" elapsed="0.000000"/>
+</return>
+<status status="NOT RUN" start="2026-04-15T11:44:50.455331" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2026-04-15T11:44:50.455331" elapsed="0.001113"/>
+</if>
+<status status="PASS" start="2026-04-15T11:44:49.115775" elapsed="1.340669"/>
+</branch>
+<status status="PASS" start="2026-04-15T11:44:49.115775" elapsed="1.340669"/>
+</if>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-04-15T11:44:50.456444" level="INFO">Device not ready yet. Waiting 10s...</msg>
+<arg>Device not ready yet. Waiting ${POLL_INTERVAL}...</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-04-15T11:44:50.456444" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-04-15T11:45:00.456625" level="INFO">Slept 10 seconds.</msg>
+<arg>${POLL_INTERVAL}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-04-15T11:44:50.456444" elapsed="10.000181"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2026-04-15T11:44:39.095334" elapsed="21.361291"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-04-15T11:45:00.456625" level="INFO">${elapsed} = 21</msg>
+<var>${elapsed}</var>
+<arg>int(__import__('time').time()) - ${start_time}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-04-15T11:45:00.456625" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-04-15T11:45:00.457799" level="INFO">Poll attempt 2 — 21s elapsed</msg>
+<arg>Poll attempt ${i+1} — ${elapsed}s elapsed</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-04-15T11:45:00.456625" elapsed="0.001174"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-04-15T11:45:01.036717" level="INFO">GET Request : url=https://192.168.189.121/mgmt/v1/healthstatus/ishealthy 
+ path_url=/mgmt/v1/healthstatus/ishealthy 
+ headers={'User-Agent': 'python-requests/2.33.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-04-15T11:45:01.036717" level="INFO">GET Response : url=https://192.168.189.121/mgmt/v1/healthstatus/ishealthy 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.23.4', 'Date': 'Wed, 15 Apr 2026 15:45:01 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive'} 
+ body=true 
+ </msg>
+<arg>avio2_mgmt</arg>
+<arg>${HEALTH_ENDPOINT}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-04-15T11:45:00.457799" elapsed="0.578918"/>
+</kw>
+<msg time="2026-04-15T11:45:01.038222" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>GET On Session</arg>
+<arg>avio2_mgmt</arg>
+<arg>${HEALTH_ENDPOINT}</arg>
+<arg>expected_status=200</arg>
+<doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-04-15T11:45:00.457799" elapsed="0.580423"/>
+</kw>
+<if>
+<branch type="IF" condition="${status}">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-04-15T11:45:01.454882" level="INFO">GET Request : url=https://192.168.189.121/mgmt/v1/healthstatus/ishealthy 
+ path_url=/mgmt/v1/healthstatus/ishealthy 
+ headers={'User-Agent': 'python-requests/2.33.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-04-15T11:45:01.454882" level="INFO">GET Response : url=https://192.168.189.121/mgmt/v1/healthstatus/ishealthy 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.23.4', 'Date': 'Wed, 15 Apr 2026 15:45:01 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive'} 
+ body=true 
+ </msg>
+<msg time="2026-04-15T11:45:01.454882" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>avio2_mgmt</arg>
+<arg>${HEALTH_ENDPOINT}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-04-15T11:45:01.038222" elapsed="0.416660"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2026-04-15T11:45:01.454882" level="INFO">${body} = true</msg>
+<var>${body}</var>
+<arg>${response.text}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2026-04-15T11:45:01.454882" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="'${body.strip()}' == 'true'">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-04-15T11:45:01.456376" level="INFO">Device is back online and healthy!</msg>
+<arg>Device is back online and healthy!</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-04-15T11:45:01.456376" elapsed="0.000000"/>
+</kw>
+<return>
+<status status="PASS" start="2026-04-15T11:45:01.456376" elapsed="0.000000"/>
+</return>
+<status status="PASS" start="2026-04-15T11:45:01.454882" elapsed="0.001494"/>
+</branch>
+<status status="PASS" start="2026-04-15T11:45:01.454882" elapsed="0.001494"/>
+</if>
+<status status="PASS" start="2026-04-15T11:45:01.038222" elapsed="0.418154"/>
+</branch>
+<status status="PASS" start="2026-04-15T11:45:01.038222" elapsed="0.418154"/>
+</if>
+<kw name="Log" owner="BuiltIn">
+<arg>Device not ready yet. Waiting ${POLL_INTERVAL}...</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-04-15T11:45:01.456376" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${POLL_INTERVAL}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-04-15T11:45:01.456376" elapsed="0.000000"/>
+</kw>
+<var name="${i}">1</var>
+<status status="PASS" start="2026-04-15T11:45:00.456625" elapsed="0.999751"/>
+</iter>
+<var>${i}</var>
+<value>18</value>
+<status status="PASS" start="2026-04-15T11:44:39.095334" elapsed="22.361042"/>
+</for>
+<kw name="Fail" owner="BuiltIn">
+<arg>Device did not recover within ${REBOOT_TIMEOUT}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-04-15T11:45:01.456376" elapsed="0.000000"/>
+</kw>
+<doc>Polls ishealthy every 10s for up to 3 minutes until true is returned</doc>
+<status status="PASS" start="2026-04-15T11:44:39.093836" elapsed="22.362540"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-04-15T11:45:01.457382" level="INFO">Device successfully rebooted and is healthy</msg>
+<arg>Device successfully rebooted and is healthy</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-04-15T11:45:01.456376" elapsed="0.001006"/>
+</kw>
+<kw name="Open Browser To Login Page" owner="keywords">
+<kw name="Set Environment Variable" owner="OperatingSystem">
+<msg time="2026-04-15T11:45:01.457382" level="INFO">Environment variable 'NO_PROXY' set to value '127.0.0.1,localhost'.</msg>
+<arg>NO_PROXY</arg>
+<arg>127.0.0.1,localhost</arg>
+<doc>Sets an environment variable to a specified value.</doc>
+<status status="PASS" start="2026-04-15T11:45:01.457382" elapsed="0.000000"/>
+</kw>
+<kw name="Set Environment Variable" owner="OperatingSystem">
+<msg time="2026-04-15T11:45:01.457382" level="INFO">Environment variable 'NODE_TLS_REJECT_UNAUTHORIZED' set to value '0'.</msg>
+<arg>NODE_TLS_REJECT_UNAUTHORIZED</arg>
+<arg>0</arg>
+<doc>Sets an environment variable to a specified value.</doc>
+<status status="PASS" start="2026-04-15T11:45:01.457382" elapsed="0.000000"/>
+</kw>
+<kw name="New Browser" owner="Browser">
+<msg time="2026-04-15T11:45:01.458813" level="INFO">{"browser": "chromium", "headless": false, "args": ["--ignore-certificate-errors"], "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 2000.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\rabdulla\\robot-tests\\browser\\traces\\temp\\05ea63bc-aa9a-4bef-a609-db6f2b09eded"}</msg>
+<msg time="2026-04-15T11:45:02.022452" level="INFO">Starting Browser process C:\Users\rabdulla\robot-tests\.venv\Lib\site-packages\Browser\wrapper\index.js using at 127.0.0.1:51518</msg>
+<msg time="2026-04-15T11:45:03.662858" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"args":["--ignore-certificate-errors"],"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":2000,"timeout":30000,"tracesDir":"C:\\Users\\rabdulla\\robot-tests\\browser\\traces\\temp\\05ea63bc-aa9a-4bef-a609-db6f2b09eded"}</msg>
+<arg>${BROWSER}</arg>
+<arg>headless=False</arg>
+<arg>slowMo=2000ms</arg>
+<arg>args=["--ignore-certificate-errors"]</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2026-04-15T11:45:01.457382" elapsed="2.205476"/>
+</kw>
+<kw name="New Context" owner="Browser">
+<msg time="2026-04-15T11:45:03.664112" level="INFO">{
+  "acceptDownloads": true,
+  "bypassCSP": false,
+  "forcedColors": "none",
+  "ignoreHTTPSErrors": true,
+  "javaScriptEnabled": true,
+  "offline": false,
+  "reducedMotion": "no-preference",
+  "serviceWorkers": "allow",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  }
+}</msg>
+<msg time="2026-04-15T11:45:03.674429" level="INFO">Successfully created context. </msg>
+<msg time="2026-04-15T11:45:03.674429" level="INFO">{'acceptDownloads': True, 'bypassCSP': False, 'forcedColors': 'none', 'ignoreHTTPSErrors': True, 'javaScriptEnabled': True, 'offline': False, 'reducedMotion': 'no-preference', 'serviceWorkers': 'allow', 'viewport': {'width': 1280, 'height': 720}}</msg>
+<arg>ignoreHTTPSErrors=True</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new BrowserContext with specified options.</doc>
+<status status="PASS" start="2026-04-15T11:45:03.662858" elapsed="0.011571"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2026-04-15T11:45:06.847327" level="INFO">Successfully initialized new page object and opened url: https://192.168.189.121/#/login</msg>
+<arg>${LOGIN_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2026-04-15T11:45:03.674429" elapsed="3.173909"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-04-15T11:45:06.868429" level="INFO">Waited for Element with selector id=loginUsernameInput at state visible</msg>
+<arg>${USERNAME_FIELD}</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-04-15T11:45:06.848338" elapsed="0.020091"/>
+</kw>
+<status status="PASS" start="2026-04-15T11:45:01.457382" elapsed="5.411047"/>
+</kw>
+<kw name="Navigate To Login Page" owner="keywords">
+<kw name="Get Page Ids" owner="Browser">
+<msg time="2026-04-15T11:45:06.872743" level="INFO">${pages} = ['page=de1321a5-59bd-48c1-9fdf-bb9fe7f0754a']</msg>
+<var>${pages}</var>
+<tag>Assertion</tag>
+<tag>BrowserControl</tag>
+<tag>Getter</tag>
+<doc>Returns a list of page ids based on the context and browser selection.
+See `Browser, Context and Page` for more information about Page and related concepts.</doc>
+<status status="PASS" start="2026-04-15T11:45:06.868429" elapsed="0.004314"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2026-04-15T11:45:06.872743" level="INFO">Length is 1.</msg>
+<msg time="2026-04-15T11:45:06.872743" level="INFO">${count} = 1</msg>
+<var>${count}</var>
+<arg>${pages}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2026-04-15T11:45:06.872743" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${count} == 0">
+<kw name="New Page" owner="Browser">
+<arg>${LOGIN_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="NOT RUN" start="2026-04-15T11:45:06.874226" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2026-04-15T11:45:06.872743" elapsed="0.001483"/>
+</branch>
+<branch type="ELSE">
+<kw name="Go To" owner="Browser">
+<msg time="2026-04-15T11:45:08.881133" level="INFO">Successfully opened URL https://192.168.189.121/#/login</msg>
+<arg>${LOGIN_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-04-15T11:45:06.874226" elapsed="2.006907"/>
+</kw>
+<status status="PASS" start="2026-04-15T11:45:06.874226" elapsed="2.006907"/>
+</branch>
+<status status="PASS" start="2026-04-15T11:45:06.872743" elapsed="2.008390"/>
+</if>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-04-15T11:45:08.886415" level="INFO">Waited for Element with selector id=loginUsernameInput at state visible</msg>
+<arg>${USERNAME_FIELD}</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-04-15T11:45:08.881133" elapsed="0.005282"/>
+</kw>
+<status status="PASS" start="2026-04-15T11:45:06.868429" elapsed="2.017986"/>
+</kw>
+<kw name="Enter Credentials" owner="keywords">
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-15T11:45:08.887873" level="INFO">Fills the text 'Tester' in the given field.</msg>
+<arg>${USERNAME_FIELD}</arg>
+<arg>${user}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-15T11:45:08.887873" elapsed="2.028311"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-04-15T11:45:10.916184" level="INFO">Clicks the element 'id=loginPasswordInput'.</msg>
+<arg>${PASSWORD_FIELD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-04-15T11:45:10.916184" elapsed="2.033166"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-15T11:45:12.949350" level="INFO">Fills the text 'Matrox1234!' in the given field.</msg>
+<arg>${PASSWORD_FIELD}</arg>
+<arg>${pass}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-15T11:45:12.949350" elapsed="2.014047"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-04-15T11:45:15.963727" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-04-15T11:45:14.963397" elapsed="1.000330"/>
+</kw>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<status status="PASS" start="2026-04-15T11:45:08.886415" elapsed="7.077312"/>
+</kw>
+<kw name="Highlight Element" owner="keywords">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-04-15T11:45:15.969575" level="INFO">Waited for Element with selector css=.mtx-eye-off at state visible</msg>
+<arg>${selector}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-04-15T11:45:15.963727" elapsed="0.005848"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-04-15T11:45:15.987864" level="INFO">JavaScript executed successfully.</msg>
+<arg>${selector}</arg>
+<arg>(element) =&gt; { element.style.border = '3px solid red'; element.style.backgroundColor = 'rgba(255, 255, 0, 0.3)'; element.style.transition = 'all 0.3s'; }</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-04-15T11:45:15.969575" elapsed="0.018289"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-04-15T11:45:16.488022" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-04-15T11:45:15.987864" elapsed="0.500158"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-04-15T11:45:16.494409" level="INFO">JavaScript executed successfully.</msg>
+<arg>${selector}</arg>
+<arg>(element) =&gt; { element.style.border = ''; element.style.backgroundColor = ''; }</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-04-15T11:45:16.488022" elapsed="0.006387"/>
+</kw>
+<arg>${EYE_BUTTON}</arg>
+<status status="PASS" start="2026-04-15T11:45:15.963727" elapsed="0.530682"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-04-15T11:45:16.495906" level="INFO">Clicks the element 'css=.mtx-eye-off'.</msg>
+<arg>${EYE_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-04-15T11:45:16.494409" elapsed="2.049933"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-04-15T11:45:19.544386" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-04-15T11:45:18.544342" elapsed="1.000044"/>
+</kw>
+<kw name="Highlight Element" owner="keywords">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-04-15T11:45:19.548503" level="INFO">Waited for Element with selector id=loginButton at state visible</msg>
+<arg>${selector}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-04-15T11:45:19.544386" elapsed="0.004117"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-04-15T11:45:19.553686" level="INFO">JavaScript executed successfully.</msg>
+<arg>${selector}</arg>
+<arg>(element) =&gt; { element.style.border = '3px solid red'; element.style.backgroundColor = 'rgba(255, 255, 0, 0.3)'; element.style.transition = 'all 0.3s'; }</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-04-15T11:45:19.548503" elapsed="0.005183"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-04-15T11:45:20.055243" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-04-15T11:45:19.553686" elapsed="0.501557"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-04-15T11:45:20.062372" level="INFO">JavaScript executed successfully.</msg>
+<arg>${selector}</arg>
+<arg>(element) =&gt; { element.style.border = ''; element.style.backgroundColor = ''; }</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-04-15T11:45:20.055243" elapsed="0.007129"/>
+</kw>
+<arg>${LOGIN_BUTTON}</arg>
+<status status="PASS" start="2026-04-15T11:45:19.544386" elapsed="0.517986"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-04-15T11:45:20.063627" level="INFO">Clicks the element 'id=loginButton'.</msg>
+<arg>${LOGIN_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-04-15T11:45:20.063627" elapsed="2.052784"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-04-15T11:45:32.615150" level="INFO">Waited for Element with selector id=headerDropdownButton at state visible</msg>
+<arg>${DASHBOARD_HEADER}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-04-15T11:45:22.116411" elapsed="10.498739"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-04-15T11:45:32.615150" level="INFO">Device successfully rebooted and WebUI is accessible</msg>
+<arg>Device successfully rebooted and WebUI is accessible</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-04-15T11:45:32.615150" elapsed="0.000000"/>
+</kw>
+<kw name="Logout" owner="keywords">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-04-15T11:45:34.615660" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-04-15T11:45:32.615150" elapsed="2.000510"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-04-15T11:45:34.619820" level="INFO">Waited for Element with selector id=headerDropdownButton at state visible</msg>
+<arg>${LOGOUT_MENU}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-04-15T11:45:34.615660" elapsed="0.004160"/>
+</kw>
+<kw name="Highlight Element" owner="keywords">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-04-15T11:45:34.622319" level="INFO">Waited for Element with selector id=headerDropdownButton at state visible</msg>
+<arg>${selector}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-04-15T11:45:34.619820" elapsed="0.003497"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-04-15T11:45:34.628127" level="INFO">JavaScript executed successfully.</msg>
+<arg>${selector}</arg>
+<arg>(element) =&gt; { element.style.border = '3px solid red'; element.style.backgroundColor = 'rgba(255, 255, 0, 0.3)'; element.style.transition = 'all 0.3s'; }</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-04-15T11:45:34.623317" elapsed="0.006289"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-04-15T11:45:35.129681" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-04-15T11:45:34.629606" elapsed="0.500075"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-04-15T11:45:35.134854" level="INFO">JavaScript executed successfully.</msg>
+<arg>${selector}</arg>
+<arg>(element) =&gt; { element.style.border = ''; element.style.backgroundColor = ''; }</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-04-15T11:45:35.129681" elapsed="0.006358"/>
+</kw>
+<arg>${LOGOUT_MENU}</arg>
+<status status="PASS" start="2026-04-15T11:45:34.619820" elapsed="0.516219"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-04-15T11:45:35.136039" level="INFO">Clicks the element 'id=headerDropdownButton'.</msg>
+<arg>${LOGOUT_MENU}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-04-15T11:45:35.136039" elapsed="2.050805"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-04-15T11:45:38.187357" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-04-15T11:45:37.186844" elapsed="1.000513"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-04-15T11:45:38.191233" level="INFO">Waited for Element with selector id=headerMenuItemLogout at state visible</msg>
+<arg>${LOGOUT_BUTTON}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-04-15T11:45:38.187357" elapsed="0.003876"/>
+</kw>
+<kw name="Highlight Element" owner="keywords">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-04-15T11:45:38.193891" level="INFO">Waited for Element with selector id=headerMenuItemLogout at state visible</msg>
+<arg>${selector}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-04-15T11:45:38.191233" elapsed="0.002658"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-04-15T11:45:38.199356" level="INFO">JavaScript executed successfully.</msg>
+<arg>${selector}</arg>
+<arg>(element) =&gt; { element.style.border = '3px solid red'; element.style.backgroundColor = 'rgba(255, 255, 0, 0.3)'; element.style.transition = 'all 0.3s'; }</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-04-15T11:45:38.193891" elapsed="0.005465"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-04-15T11:45:38.700650" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-04-15T11:45:38.200363" elapsed="0.500287"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-04-15T11:45:38.706377" level="INFO">JavaScript executed successfully.</msg>
+<arg>${selector}</arg>
+<arg>(element) =&gt; { element.style.border = ''; element.style.backgroundColor = ''; }</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-04-15T11:45:38.700650" elapsed="0.005727"/>
+</kw>
+<arg>${LOGOUT_BUTTON}</arg>
+<status status="PASS" start="2026-04-15T11:45:38.191233" elapsed="0.515144"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-04-15T11:45:38.706377" level="INFO">Clicks the element 'id=headerMenuItemLogout'.</msg>
+<arg>${LOGOUT_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-04-15T11:45:38.706377" elapsed="2.036239"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-04-15T11:45:42.744402" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-04-15T11:45:40.742616" elapsed="2.001786"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-04-15T11:45:42.747243" level="INFO">Waited for Element with selector id=loginUsernameInput at state visible</msg>
+<arg>${USERNAME_FIELD}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-04-15T11:45:42.744402" elapsed="0.004275"/>
+</kw>
+<status status="PASS" start="2026-04-15T11:45:32.615150" elapsed="10.133527"/>
+</kw>
+<kw name="Close Browser" owner="Browser">
+<msg time="2026-04-15T11:45:43.024265" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-04-15T11:45:42.748677" elapsed="0.275588"/>
+</kw>
+<kw name="Run Keyword If Test Failed" owner="BuiltIn" type="TEARDOWN">
+<arg>Log</arg>
+<arg>Test failed — no browser open for screenshot</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="PASS" start="2026-04-15T11:45:43.025262" elapsed="0.000000"/>
+</kw>
+<doc>Triggers a device reboot via API and waits for recovery via health endpoint</doc>
+<status status="PASS" start="2026-04-15T11:43:54.902625" elapsed="108.122637"/>
+</test>
+<status status="PASS" start="2026-04-15T11:43:54.474399" elapsed="108.557401"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="RebootDeviceWebUI" id="s1" pass="1" fail="0" skip="0">RebootDeviceWebUI</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2026-04-15T11:44:07.372196" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(&lt;HTTPSConnection(host='192.168.189.121', port=443) at 0x16dd77953d0&gt;, 'Connection to 192.168.189.121 timed out. (connect timeout=None)')': /mgmt/v1/healthstatus/ishealthy</msg>
+<msg time="2026-04-15T11:44:28.629770" level="WARN">Retrying (RetryAdapter(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(&lt;HTTPSConnection(host='192.168.189.121', port=443) at 0x16dd81d94c0&gt;, 'Connection to 192.168.189.121 timed out. (connect timeout=None)')': /mgmt/v1/healthstatus/ishealthy</msg>
+<msg time="2026-04-15T11:44:37.049616" level="WARN">Retrying (RetryAdapter(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPSConnection(host='192.168.189.121', port=443): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it")': /mgmt/v1/healthstatus/ishealthy</msg>
+<msg time="2026-04-15T11:44:41.138888" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPSConnection(host='192.168.189.121', port=443): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it")': /mgmt/v1/healthstatus/ishealthy</msg>
+</errors>
+</robot>

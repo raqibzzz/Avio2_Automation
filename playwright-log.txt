@@ -1,0 +1,131 @@
+{"level":30,"time":"2026-04-15T15:45:02.839Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Listening on 127.0.0.1:51518"}
+{"level":30,"time":"2026-04-15T15:45:03.103Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method newBrowser"}
+{"level":30,"time":"2026-04-15T15:45:03.660Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Adding browser to stack: chromium, version: 145.0.7632.6"}
+{"level":30,"time":"2026-04-15T15:45:03.661Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Adding 0 contexts to browser"}
+{"level":30,"time":"2026-04-15T15:45:03.661Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method newBrowser"}
+{"level":30,"time":"2026-04-15T15:45:03.664Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method newContext"}
+{"level":30,"time":"2026-04-15T15:45:03.664Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Creating new context with options: {\"acceptDownloads\":true,\"bypassCSP\":false,\"forcedColors\":\"none\",\"ignoreHTTPSErrors\":true,\"javaScriptEnabled\":true,\"offline\":false,\"reducedMotion\":\"no-preference\",\"serviceWorkers\":\"allow\",\"viewport\":{\"width\":1280,\"height\":720}}"}
+{"level":30,"time":"2026-04-15T15:45:03.664Z","pid":52140,"hostname":"DELL-D33M-1","msg":"currentBrowser: {\"name\":\"chromium\",\"browser\":{\"_type\":\"Browser\",\"_guid\":\"browser@558e36710f5c4f979062ab3c8bda6ef2\"},\"headless\":false,\"_contextStack\":[],\"id\":\"browser=7ad6c283-c519-49ab-b090-8c19bfd63fa9\"}"}
+{"level":30,"time":"2026-04-15T15:45:03.664Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Trace file: "}
+{"level":30,"time":"2026-04-15T15:45:03.672Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Setting default timeout for context context=ed53273f-4f87-411b-8462-1575b38914bc to 10000"}
+{"level":30,"time":"2026-04-15T15:45:03.672Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Changed active context: context=ed53273f-4f87-411b-8462-1575b38914bc"}
+{"level":30,"time":"2026-04-15T15:45:03.672Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method newContext"}
+{"level":30,"time":"2026-04-15T15:45:03.675Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method newPage"}
+{"level":30,"time":"2026-04-15T15:45:03.675Z","pid":52140,"hostname":"DELL-D33M-1","msg":"currentBrowser: {\"name\":\"chromium\",\"browser\":{\"_type\":\"Browser\",\"_guid\":\"browser@558e36710f5c4f979062ab3c8bda6ef2\"},\"headless\":false,\"_contextStack\":[{\"id\":\"context=ed53273f-4f87-411b-8462-1575b38914bc\",\"c\":{\"_type\":\"BrowserContext\",\"_guid\":\"browser-context@38b0a390eb6a8db474f3b2254d386a9c\"},\"pageStack\":[],\"options\":{\"acceptDownloads\":true,\"bypassCSP\":false,\"forcedColors\":\"none\",\"ignoreHTTPSErrors\":true,\"javaScriptEnabled\":true,\"offline\":false,\"reducedMotion\":\"no-preference\",\"serviceWorkers\":\"allow\",\"viewport\":{\"width\":1280,\"height\":720}},\"traceFile\":\"\"}],\"id\":\"browser=7ad6c283-c519-49ab-b090-8c19bfd63fa9\"}"}
+{"level":30,"time":"2026-04-15T15:45:03.886Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Video path: undefined"}
+{"level":30,"time":"2026-04-15T15:45:03.886Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Changed active page"}
+{"level":30,"time":"2026-04-15T15:45:06.845Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method newPage"}
+{"level":30,"time":"2026-04-15T15:45:06.848Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method waitForElementState"}
+{"level":30,"time":"2026-04-15T15:45:06.849Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Strict mode is enabled, find Locator with id=loginUsernameInput in page."}
+{"level":30,"time":"2026-04-15T15:45:06.865Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method waitForElementState"}
+{"level":30,"time":"2026-04-15T15:45:06.869Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2026-04-15T15:45:06.871Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2026-04-15T15:45:06.874Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method goTo"}
+{"level":30,"time":"2026-04-15T15:45:08.879Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method goTo"}
+{"level":30,"time":"2026-04-15T15:45:08.882Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method waitForElementState"}
+{"level":30,"time":"2026-04-15T15:45:08.882Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Strict mode is enabled, find Locator with id=loginUsernameInput in page."}
+{"level":30,"time":"2026-04-15T15:45:08.885Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method waitForElementState"}
+{"level":30,"time":"2026-04-15T15:45:08.888Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method fillText"}
+{"level":30,"time":"2026-04-15T15:45:08.888Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Strict mode is enabled, find Locator with id=loginUsernameInput in page."}
+{"level":30,"time":"2026-04-15T15:45:10.913Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method fillText"}
+{"level":30,"time":"2026-04-15T15:45:10.916Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method click"}
+{"level":30,"time":"2026-04-15T15:45:10.916Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Strict mode is enabled, find Locator with id=loginPasswordInput in page."}
+{"level":30,"time":"2026-04-15T15:45:12.947Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method click"}
+{"level":30,"time":"2026-04-15T15:45:12.949Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method fillText"}
+{"level":30,"time":"2026-04-15T15:45:12.949Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Strict mode is enabled, find Locator with id=loginPasswordInput in page."}
+{"level":30,"time":"2026-04-15T15:45:14.961Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method fillText"}
+{"level":30,"time":"2026-04-15T15:45:15.964Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method waitForElementState"}
+{"level":30,"time":"2026-04-15T15:45:15.964Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Strict mode is enabled, find Locator with css=.mtx-eye-off in page."}
+{"level":30,"time":"2026-04-15T15:45:15.968Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method waitForElementState"}
+{"level":30,"time":"2026-04-15T15:45:15.970Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method evaluateJavascript"}
+{"level":30,"time":"2026-04-15T15:45:15.970Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Strict mode is enabled, find Locator with css=.mtx-eye-off in page."}
+{"level":30,"time":"2026-04-15T15:45:15.984Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method evaluateJavascript"}
+{"level":30,"time":"2026-04-15T15:45:16.488Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method evaluateJavascript"}
+{"level":30,"time":"2026-04-15T15:45:16.488Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Strict mode is enabled, find Locator with css=.mtx-eye-off in page."}
+{"level":30,"time":"2026-04-15T15:45:16.493Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method evaluateJavascript"}
+{"level":30,"time":"2026-04-15T15:45:16.495Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method click"}
+{"level":30,"time":"2026-04-15T15:45:16.495Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Strict mode is enabled, find Locator with css=.mtx-eye-off in page."}
+{"level":30,"time":"2026-04-15T15:45:18.542Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method click"}
+{"level":30,"time":"2026-04-15T15:45:19.545Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method waitForElementState"}
+{"level":30,"time":"2026-04-15T15:45:19.545Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Strict mode is enabled, find Locator with id=loginButton in page."}
+{"level":30,"time":"2026-04-15T15:45:19.547Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method waitForElementState"}
+{"level":30,"time":"2026-04-15T15:45:19.548Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method evaluateJavascript"}
+{"level":30,"time":"2026-04-15T15:45:19.549Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Strict mode is enabled, find Locator with id=loginButton in page."}
+{"level":30,"time":"2026-04-15T15:45:19.552Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method evaluateJavascript"}
+{"level":30,"time":"2026-04-15T15:45:20.055Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method evaluateJavascript"}
+{"level":30,"time":"2026-04-15T15:45:20.055Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Strict mode is enabled, find Locator with id=loginButton in page."}
+{"level":30,"time":"2026-04-15T15:45:20.059Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method evaluateJavascript"}
+{"level":30,"time":"2026-04-15T15:45:20.064Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method click"}
+{"level":30,"time":"2026-04-15T15:45:20.064Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Strict mode is enabled, find Locator with id=loginButton in page."}
+{"level":30,"time":"2026-04-15T15:45:22.114Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method click"}
+{"level":30,"time":"2026-04-15T15:45:22.116Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method waitForElementState"}
+{"level":30,"time":"2026-04-15T15:45:22.117Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Strict mode is enabled, find Locator with id=headerDropdownButton in page."}
+{"level":30,"time":"2026-04-15T15:45:32.613Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method waitForElementState"}
+{"level":30,"time":"2026-04-15T15:45:34.615Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method waitForElementState"}
+{"level":30,"time":"2026-04-15T15:45:34.615Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Strict mode is enabled, find Locator with id=headerDropdownButton in page."}
+{"level":30,"time":"2026-04-15T15:45:34.617Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method waitForElementState"}
+{"level":30,"time":"2026-04-15T15:45:34.619Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method waitForElementState"}
+{"level":30,"time":"2026-04-15T15:45:34.619Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Strict mode is enabled, find Locator with id=headerDropdownButton in page."}
+{"level":30,"time":"2026-04-15T15:45:34.621Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method waitForElementState"}
+{"level":30,"time":"2026-04-15T15:45:34.622Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method evaluateJavascript"}
+{"level":30,"time":"2026-04-15T15:45:34.622Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Strict mode is enabled, find Locator with id=headerDropdownButton in page."}
+{"level":30,"time":"2026-04-15T15:45:34.626Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method evaluateJavascript"}
+{"level":30,"time":"2026-04-15T15:45:35.129Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method evaluateJavascript"}
+{"level":30,"time":"2026-04-15T15:45:35.129Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Strict mode is enabled, find Locator with id=headerDropdownButton in page."}
+{"level":30,"time":"2026-04-15T15:45:35.133Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method evaluateJavascript"}
+{"level":30,"time":"2026-04-15T15:45:35.136Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method click"}
+{"level":30,"time":"2026-04-15T15:45:35.136Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Strict mode is enabled, find Locator with id=headerDropdownButton in page."}
+{"level":30,"time":"2026-04-15T15:45:37.184Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method click"}
+{"level":30,"time":"2026-04-15T15:45:38.187Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method waitForElementState"}
+{"level":30,"time":"2026-04-15T15:45:38.187Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Strict mode is enabled, find Locator with id=headerMenuItemLogout in page."}
+{"level":30,"time":"2026-04-15T15:45:38.189Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method waitForElementState"}
+{"level":30,"time":"2026-04-15T15:45:38.191Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method waitForElementState"}
+{"level":30,"time":"2026-04-15T15:45:38.191Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Strict mode is enabled, find Locator with id=headerMenuItemLogout in page."}
+{"level":30,"time":"2026-04-15T15:45:38.192Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method waitForElementState"}
+{"level":30,"time":"2026-04-15T15:45:38.194Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method evaluateJavascript"}
+{"level":30,"time":"2026-04-15T15:45:38.194Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Strict mode is enabled, find Locator with id=headerMenuItemLogout in page."}
+{"level":30,"time":"2026-04-15T15:45:38.198Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method evaluateJavascript"}
+{"level":30,"time":"2026-04-15T15:45:38.700Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method evaluateJavascript"}
+{"level":30,"time":"2026-04-15T15:45:38.700Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Strict mode is enabled, find Locator with id=headerMenuItemLogout in page."}
+{"level":30,"time":"2026-04-15T15:45:38.704Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method evaluateJavascript"}
+{"level":30,"time":"2026-04-15T15:45:38.706Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method click"}
+{"level":30,"time":"2026-04-15T15:45:38.706Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Strict mode is enabled, find Locator with id=headerMenuItemLogout in page."}
+{"level":30,"time":"2026-04-15T15:45:40.741Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method click"}
+{"level":30,"time":"2026-04-15T15:45:42.744Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method waitForElementState"}
+{"level":30,"time":"2026-04-15T15:45:42.744Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Strict mode is enabled, find Locator with id=loginUsernameInput in page."}
+{"level":30,"time":"2026-04-15T15:45:42.746Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method waitForElementState"}
+{"level":30,"time":"2026-04-15T15:45:42.748Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method closeBrowser"}
+{"level":30,"time":"2026-04-15T15:45:42.759Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Removed page=7296254d-bb9a-47b1-ad00-1889b73a81ee from context=ed53273f-4f87-411b-8462-1575b38914bc page stack"}
+{"level":30,"time":"2026-04-15T15:45:43.022Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method closeBrowser"}
+================= Original suppressed error =================
+Error: Browser has been closed.
+    at PlaywrightState.getActiveBrowser (C:\Users\rabdulla\robot-tests\.venv\Lib\site-packages\Browser\wrapper\index.js:12757:15)
+    at PlaywrightServer.getActiveBrowser (C:\Users\rabdulla\robot-tests\.venv\Lib\site-packages\Browser\wrapper\index.js:13677:59)
+    at PlaywrightServer.setTimeout (C:\Users\rabdulla\robot-tests\.venv\Lib\site-packages\Browser\wrapper\index.js:13933:56)
+    at Object.onReceiveHalfClose (C:\Users\rabdulla\robot-tests\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server.js:1464:25)
+    at BaseServerInterceptingCall.maybePushNextMessage (C:\Users\rabdulla\robot-tests\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:595:31)
+    at BaseServerInterceptingCall.handleEndEvent (C:\Users\rabdulla\robot-tests\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:635:14)
+    at ServerHttp2Stream.<anonymous> (C:\Users\rabdulla\robot-tests\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:394:18)
+    at ServerHttp2Stream.emit (node:events:520:35)
+    at endReadableNT (node:internal/streams/readable:1729:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+=============================================================
+{"level":30,"time":"2026-04-15T15:45:43.029Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2026-04-15T15:45:43.029Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method getBrowserCatalog"}
+================= Original suppressed error =================
+Error: Browser has been closed.
+    at PlaywrightState.getActiveBrowser (C:\Users\rabdulla\robot-tests\.venv\Lib\site-packages\Browser\wrapper\index.js:12757:15)
+    at PlaywrightServer.getActiveBrowser (C:\Users\rabdulla\robot-tests\.venv\Lib\site-packages\Browser\wrapper\index.js:13677:59)
+    at PlaywrightServer.setTimeout (C:\Users\rabdulla\robot-tests\.venv\Lib\site-packages\Browser\wrapper\index.js:13933:56)
+    at Object.onReceiveHalfClose (C:\Users\rabdulla\robot-tests\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server.js:1464:25)
+    at BaseServerInterceptingCall.maybePushNextMessage (C:\Users\rabdulla\robot-tests\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:595:31)
+    at BaseServerInterceptingCall.handleEndEvent (C:\Users\rabdulla\robot-tests\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:635:14)
+    at ServerHttp2Stream.<anonymous> (C:\Users\rabdulla\robot-tests\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:394:18)
+    at ServerHttp2Stream.emit (node:events:520:35)
+    at endReadableNT (node:internal/streams/readable:1729:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+=============================================================
+{"level":30,"time":"2026-04-15T15:45:43.032Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2026-04-15T15:45:43.032Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2026-04-15T15:45:43.091Z","pid":52140,"hostname":"DELL-D33M-1","msg":"Start of node method closeAllBrowsers"}
+{"level":30,"time":"2026-04-15T15:45:43.091Z","pid":52140,"hostname":"DELL-D33M-1","msg":"End of node method closeAllBrowsers"}

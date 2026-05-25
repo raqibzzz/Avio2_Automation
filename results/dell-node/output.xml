@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.12.10 on win32)" generated="2026-04-23T09:53:17.466946" rpa="false" schemaversion="5">
+<suite id="s1" name="RebootDevice" source="C:\Users\rabdulla\robot-tests\RebootDevice.robot">
+<test id="s1-t1" name="Reboot Device And Verify Recovery" line="17">
+<kw name="Get Auth Token Via API">
+<kw name="Evaluate" owner="BuiltIn">
+<arg>__import__('urllib3').disable_warnings()</arg>
+<arg>modules=urllib3</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-04-23T09:53:17.765915" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-04-23T09:53:17.765915" level="INFO">${base_url} = https://192.168.189.121</msg>
+<var>${base_url}</var>
+<arg>https://${DEVICE_IP}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-04-23T09:53:17.765915" elapsed="0.000000"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-04-23T09:53:17.765915" level="INFO">${auth} = ['Tester', 'Matrox1234!']</msg>
+<var>${auth}</var>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-04-23T09:53:17.765915" elapsed="0.000000"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-04-23T09:53:17.766915" level="INFO">Creating Session using : alias=avio2_auth, url=https://192.168.189.121, headers={},                     cookies={}, auth=&lt;requests.auth.HTTPBasicAuth object at 0x0000029DA52399A0&gt;, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>avio2_auth</arg>
+<arg>${base_url}</arg>
+<arg>verify=False</arg>
+<arg>auth=${auth}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-04-23T09:53:17.765915" elapsed="0.001000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-04-23T09:53:17.766915" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-04-23T09:53:17.766915" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-04-23T09:53:18.924102" level="INFO">POST Request : url=https://192.168.189.121/auth/v1/users/login 
+ path_url=/auth/v1/users/login 
+ headers={'User-Agent': 'python-requests/2.33.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '0', 'Authorization': 'Basic VGVzdGVyOk1hdHJveDEyMzQh'} 
+ body=None 
+ </msg>
+<msg time="2026-04-23T09:53:18.924102" level="INFO">POST Response : url=https://192.168.189.121/auth/v1/users/login 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.23.4', 'Date': 'Thu, 23 Apr 2026 13:53:19 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive'} 
+ body={"accessToken":"92F7B088F48F9ACB3C0C077F28653D96","authenticationMode":"Local","firstName":"Tester","lastName":"Tester","role":"Admin","expirationIn":259199,"expirationAt":"2026-04-26T13:53:18.8973882+00:00"} 
+ </msg>
+<msg time="2026-04-23T09:53:18.925104" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>avio2_auth</arg>
+<arg>${AUTH_ENDPOINT}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-04-23T09:53:17.766915" elapsed="1.158189"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-04-23T09:53:18.925104" level="INFO">${token} = 92F7B088F48F9ACB3C0C077F28653D96</msg>
+<var>${token}</var>
+<arg>${response.json()}</arg>
+<arg>accessToken</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-04-23T09:53:18.925104" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-04-23T09:53:18.925104" level="INFO">Auth token retrieved successfully</msg>
+<arg>Auth token retrieved successfully</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-04-23T09:53:18.925104" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${token}</value>
+<status status="PASS" start="2026-04-23T09:53:18.925104" elapsed="0.001001"/>
+</return>
+<msg time="2026-04-23T09:53:18.926105" level="INFO">${token} = 92F7B088F48F9ACB3C0C077F28653D96</msg>
+<var>${token}</var>
+<doc>POSTs to auth endpoint with Basic Auth and returns Bearer token</doc>
+<status status="PASS" start="2026-04-23T09:53:17.764912" elapsed="1.161193"/>
+</kw>
+<kw name="Trigger Reboot Via API">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-04-23T09:53:18.926105" level="INFO">${base_url} = https://192.168.189.121</msg>
+<var>${base_url}</var>
+<arg>https://${DEVICE_IP}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-04-23T09:53:18.926105" elapsed="0.000000"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-04-23T09:53:18.926105" level="INFO">Creating Session using : alias=avio2_mgmt, url=https://192.168.189.121, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>avio2_mgmt</arg>
+<arg>${base_url}</arg>
+<arg>verify=False</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-04-23T09:53:18.926105" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-04-23T09:53:18.927104" level="INFO">${headers} = {'Authorization': 'Bearer 92F7B088F48F9ACB3C0C077F28653D96', 'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${token}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-04-23T09:53:18.926105" elapsed="0.000999"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-04-23T09:53:19.524368" level="INFO">POST Request : url=https://192.168.189.121/mgmt/v1/reboot 
+ path_url=/mgmt/v1/reboot 
+ headers={'User-Agent': 'python-requests/2.33.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer 92F7B088F48F9ACB3C0C077F28653D96', 'Content-Type': 'application/json', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2026-04-23T09:53:19.525302" level="INFO">POST Response : url=https://192.168.189.121/mgmt/v1/reboot 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.23.4', 'Date': 'Thu, 23 Apr 2026 13:53:19 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive'} 
+ body=1 
+ </msg>
+<msg time="2026-04-23T09:53:19.525302" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>avio2_mgmt</arg>
+<arg>${REBOOT_ENDPOINT}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-04-23T09:53:18.927104" elapsed="0.598198"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-04-23T09:53:19.526304" level="INFO">Reboot triggered. Response status: 200</msg>
+<arg>Reboot triggered. Response status: ${response.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-04-23T09:53:19.525302" elapsed="0.001002"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-04-23T09:53:22.526750" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-04-23T09:53:19.526304" elapsed="3.000446"/>
+</kw>
+<arg>${token}</arg>
+<doc>POSTs to reboot endpoint using Bearer token</doc>
+<status status="PASS" start="2026-04-23T09:53:18.926105" elapsed="3.600645"/>
+</kw>
+<kw name="Wait For Device To Go Offline">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-04-23T09:53:22.527761" level="INFO">Waiting for device to go offline...</msg>
+<arg>Waiting for device to go offline...</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-04-23T09:53:22.527761" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-04-23T09:53:30.580611" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(&lt;HTTPSConnection(host='192.168.189.121', port=443) at 0x29da47f5820&gt;, 'Connection to 192.168.189.121 timed out. (connect timeout=None)')': /mgmt/v1/healthstatus/ishealthy</msg>
+<msg time="2026-04-23T09:53:51.818440" level="WARN">Retrying (RetryAdapter(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(&lt;HTTPSConnection(host='192.168.189.121', port=443) at 0x29da5239700&gt;, 'Connection to 192.168.189.121 timed out. (connect timeout=None)')': /mgmt/v1/healthstatus/ishealthy</msg>
+<msg time="2026-04-23T09:53:57.149815" level="WARN">Retrying (RetryAdapter(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPSConnection(host='192.168.189.121', port=443): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it")': /mgmt/v1/healthstatus/ishealthy</msg>
+<msg time="2026-04-23T09:53:59.189592" level="FAIL">ConnectionError: HTTPSConnectionPool(host='192.168.189.121', port=443): Max retries exceeded with url: /mgmt/v1/healthstatus/ishealthy (Caused by NewConnectionError("HTTPSConnection(host='192.168.189.121', port=443): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it"))</msg>
+<arg>avio2_mgmt</arg>
+<arg>${HEALTH_ENDPOINT}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="FAIL" start="2026-04-23T09:53:22.528763" elapsed="36.669275">ConnectionError: HTTPSConnectionPool(host='192.168.189.121', port=443): Max retries exceeded with url: /mgmt/v1/healthstatus/ishealthy (Caused by NewConnectionError("HTTPSConnection(host='192.168.189.121', port=443): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it"))</status>
+</kw>
+<msg time="2026-04-23T09:53:59.198038" level="INFO">${status} = False</msg>
+<var>${status}</var>
+<arg>GET On Session</arg>
+<arg>avio2_mgmt</arg>
+<arg>${HEALTH_ENDPOINT}</arg>
+<arg>expected_status=200</arg>
+<doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-04-23T09:53:22.528763" elapsed="36.669275"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-04-23T09:53:59.199037" level="INFO">Device is offline. Reboot confirmed started.</msg>
+<arg>Device is offline. Reboot confirmed started.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-04-23T09:53:59.199037" elapsed="0.000000"/>
+</kw>
+<return>
+<status status="PASS" start="2026-04-23T09:53:59.200038" elapsed="0.000000"/>
+</return>
+<status status="PASS" start="2026-04-23T09:53:59.199037" elapsed="0.001001"/>
+</branch>
+<status status="PASS" start="2026-04-23T09:53:59.199037" elapsed="0.001001"/>
+</if>
+<kw name="Sleep" owner="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-04-23T09:53:59.200038" elapsed="0.000000"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2026-04-23T09:53:22.528763" elapsed="36.671275"/>
+</iter>
+<var>${i}</var>
+<value>12</value>
+<status status="PASS" start="2026-04-23T09:53:22.527761" elapsed="36.672277"/>
+</for>
+<kw name="Log" owner="BuiltIn">
+<arg>Warning: Device did not appear to go offline within 60s — continuing anyway</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-04-23T09:53:59.200038" elapsed="0.000000"/>
+</kw>
+<doc>Polls ishealthy until the device stops responding (confirming reboot started)</doc>
+<status status="PASS" start="2026-04-23T09:53:22.527761" elapsed="36.672277"/>
+</kw>
+<kw name="Wait For Device To Come Back Online">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-04-23T09:53:59.202041" level="INFO">Polling for device recovery (timeout: 180s)...</msg>
+<arg>Polling for device recovery (timeout: ${REBOOT_TIMEOUT})...</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-04-23T09:53:59.201115" elapsed="0.000926"/>
+</kw>
+<kw name="Get Time" owner="BuiltIn">
+<msg time="2026-04-23T09:53:59.202041" level="INFO">${start_time} = 1776952439</msg>
+<var>${start_time}</var>
+<arg>epoch</arg>
+<doc>Returns the given time in the requested format.</doc>
+<status status="PASS" start="2026-04-23T09:53:59.202041" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-04-23T09:53:59.203037" level="INFO">${elapsed} = 0</msg>
+<var>${elapsed}</var>
+<arg>int(__import__('time').time()) - ${start_time}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-04-23T09:53:59.203037" elapsed="0.001000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-04-23T09:53:59.205037" level="INFO">Poll attempt 1 — 0s elapsed</msg>
+<arg>Poll attempt ${i+1} — ${elapsed}s elapsed</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-04-23T09:53:59.204037" elapsed="0.001000"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-04-23T09:54:01.257727" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPSConnection(host='192.168.189.121', port=443): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it")': /mgmt/v1/healthstatus/ishealthy</msg>
+<msg time="2026-04-23T09:54:03.508632" level="WARN">Retrying (RetryAdapter(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPSConnection(host='192.168.189.121', port=443): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it")': /mgmt/v1/healthstatus/ishealthy</msg>
+<msg time="2026-04-23T09:54:12.999658" level="INFO">GET Request : url=https://192.168.189.121/mgmt/v1/healthstatus/ishealthy 
+ path_url=/mgmt/v1/healthstatus/ishealthy 
+ headers={'User-Agent': 'python-requests/2.33.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-04-23T09:54:12.999658" level="INFO">GET Response : url=https://192.168.189.121/mgmt/v1/healthstatus/ishealthy 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.23.4', 'Date': 'Thu, 23 Apr 2026 13:54:13 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive'} 
+ body=false 
+ </msg>
+<arg>avio2_mgmt</arg>
+<arg>${HEALTH_ENDPOINT}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-04-23T09:53:59.205037" elapsed="13.795620"/>
+</kw>
+<msg time="2026-04-23T09:54:13.000657" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>GET On Session</arg>
+<arg>avio2_mgmt</arg>
+<arg>${HEALTH_ENDPOINT}</arg>
+<arg>expected_status=200</arg>
+<doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-04-23T09:53:59.205037" elapsed="13.795620"/>
+</kw>
+<if>
+<branch type="IF" condition="${status}">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-04-23T09:54:14.339019" level="INFO">GET Request : url=https://192.168.189.121/mgmt/v1/healthstatus/ishealthy 
+ path_url=/mgmt/v1/healthstatus/ishealthy 
+ headers={'User-Agent': 'python-requests/2.33.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-04-23T09:54:14.339019" level="INFO">GET Response : url=https://192.168.189.121/mgmt/v1/healthstatus/ishealthy 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.23.4', 'Date': 'Thu, 23 Apr 2026 13:54:14 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'close'} 
+ body=false 
+ </msg>
+<msg time="2026-04-23T09:54:14.339019" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>avio2_mgmt</arg>
+<arg>${HEALTH_ENDPOINT}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-04-23T09:54:13.000657" elapsed="1.338362"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2026-04-23T09:54:14.341020" level="INFO">${body} = false</msg>
+<var>${body}</var>
+<arg>${response.text}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2026-04-23T09:54:14.340022" elapsed="0.000998"/>
+</kw>
+<if>
+<branch type="IF" condition="'${body.strip()}' == 'true'">
+<kw name="Log" owner="BuiltIn">
+<arg>Device is back online and healthy!</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-04-23T09:54:14.341020" elapsed="0.000000"/>
+</kw>
+<return>
+<status status="NOT RUN" start="2026-04-23T09:54:14.341020" elapsed="0.000000"/>
+</return>
+<status status="NOT RUN" start="2026-04-23T09:54:14.341020" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2026-04-23T09:54:14.341020" elapsed="0.000000"/>
+</if>
+<status status="PASS" start="2026-04-23T09:54:13.000657" elapsed="1.340363"/>
+</branch>
+<status status="PASS" start="2026-04-23T09:54:13.000657" elapsed="1.340363"/>
+</if>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-04-23T09:54:14.342019" level="INFO">Device not ready yet. Waiting 10s...</msg>
+<arg>Device not ready yet. Waiting ${POLL_INTERVAL}...</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-04-23T09:54:14.341020" elapsed="0.000999"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-04-23T09:54:24.342181" level="INFO">Slept 10 seconds.</msg>
+<arg>${POLL_INTERVAL}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-04-23T09:54:14.342019" elapsed="10.000162"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2026-04-23T09:53:59.203037" elapsed="25.139144"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-04-23T09:54:24.343194" level="INFO">${elapsed} = 25</msg>
+<var>${elapsed}</var>
+<arg>int(__import__('time').time()) - ${start_time}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-04-23T09:54:24.342181" elapsed="0.001013"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-04-23T09:54:24.344195" level="INFO">Poll attempt 2 — 25s elapsed</msg>
+<arg>Poll attempt ${i+1} — ${elapsed}s elapsed</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-04-23T09:54:24.344195" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-04-23T09:54:24.896466" level="INFO">GET Request : url=https://192.168.189.121/mgmt/v1/healthstatus/ishealthy 
+ path_url=/mgmt/v1/healthstatus/ishealthy 
+ headers={'User-Agent': 'python-requests/2.33.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-04-23T09:54:24.896466" level="INFO">GET Response : url=https://192.168.189.121/mgmt/v1/healthstatus/ishealthy 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.23.4', 'Date': 'Thu, 23 Apr 2026 13:54:25 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive'} 
+ body=true 
+ </msg>
+<arg>avio2_mgmt</arg>
+<arg>${HEALTH_ENDPOINT}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-04-23T09:54:24.345194" elapsed="0.551272"/>
+</kw>
+<msg time="2026-04-23T09:54:24.896466" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>GET On Session</arg>
+<arg>avio2_mgmt</arg>
+<arg>${HEALTH_ENDPOINT}</arg>
+<arg>expected_status=200</arg>
+<doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-04-23T09:54:24.344195" elapsed="0.553286"/>
+</kw>
+<if>
+<branch type="IF" condition="${status}">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-04-23T09:54:25.349134" level="INFO">GET Request : url=https://192.168.189.121/mgmt/v1/healthstatus/ishealthy 
+ path_url=/mgmt/v1/healthstatus/ishealthy 
+ headers={'User-Agent': 'python-requests/2.33.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-04-23T09:54:25.349134" level="INFO">GET Response : url=https://192.168.189.121/mgmt/v1/healthstatus/ishealthy 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.23.4', 'Date': 'Thu, 23 Apr 2026 13:54:25 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive'} 
+ body=true 
+ </msg>
+<msg time="2026-04-23T09:54:25.349134" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>avio2_mgmt</arg>
+<arg>${HEALTH_ENDPOINT}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-04-23T09:54:24.897481" elapsed="0.451653"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2026-04-23T09:54:25.350133" level="INFO">${body} = true</msg>
+<var>${body}</var>
+<arg>${response.text}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2026-04-23T09:54:25.349134" elapsed="0.000999"/>
+</kw>
+<if>
+<branch type="IF" condition="'${body.strip()}' == 'true'">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-04-23T09:54:25.351134" level="INFO">Device is back online and healthy!</msg>
+<arg>Device is back online and healthy!</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-04-23T09:54:25.351134" elapsed="0.000000"/>
+</kw>
+<return>
+<status status="PASS" start="2026-04-23T09:54:25.351134" elapsed="0.000000"/>
+</return>
+<status status="PASS" start="2026-04-23T09:54:25.350133" elapsed="0.001001"/>
+</branch>
+<status status="PASS" start="2026-04-23T09:54:25.350133" elapsed="0.001001"/>
+</if>
+<status status="PASS" start="2026-04-23T09:54:24.897481" elapsed="0.454652"/>
+</branch>
+<status status="PASS" start="2026-04-23T09:54:24.897481" elapsed="0.454652"/>
+</if>
+<kw name="Log" owner="BuiltIn">
+<arg>Device not ready yet. Waiting ${POLL_INTERVAL}...</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-04-23T09:54:25.352133" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${POLL_INTERVAL}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-04-23T09:54:25.352133" elapsed="0.000000"/>
+</kw>
+<var name="${i}">1</var>
+<status status="PASS" start="2026-04-23T09:54:24.342181" elapsed="1.009952"/>
+</iter>
+<var>${i}</var>
+<value>18</value>
+<status status="PASS" start="2026-04-23T09:53:59.202041" elapsed="26.150092"/>
+</for>
+<kw name="Fail" owner="BuiltIn">
+<arg>Device did not recover within ${REBOOT_TIMEOUT}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-04-23T09:54:25.352133" elapsed="0.000000"/>
+</kw>
+<doc>Polls ishealthy every 10s for up to 3 minutes until true is returned</doc>
+<status status="PASS" start="2026-04-23T09:53:59.201115" elapsed="26.151018"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-04-23T09:54:25.352133" level="INFO">Device successfully rebooted and is healthy</msg>
+<arg>Device successfully rebooted and is healthy</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-04-23T09:54:25.352133" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword If Test Failed" owner="BuiltIn" type="TEARDOWN">
+<arg>Log</arg>
+<arg>Test failed — no browser open for screenshot</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="PASS" start="2026-04-23T09:54:25.353146" elapsed="0.000000"/>
+</kw>
+<msg time="2026-04-23T09:54:25.389040" level="INFO">Starting Browser process C:\Users\rabdulla\robot-tests\.venv\Lib\site-packages\Browser\wrapper\index.js using at 127.0.0.1:58240</msg>
+<doc>Triggers a device reboot via API and waits for recovery via health endpoint</doc>
+<status status="PASS" start="2026-04-23T09:53:17.763797" elapsed="67.589349"/>
+</test>
+<status status="PASS" start="2026-04-23T09:53:17.476739" elapsed="68.967979"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="RebootDevice" id="s1" pass="1" fail="0" skip="0">RebootDevice</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2026-04-23T09:53:30.580611" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(&lt;HTTPSConnection(host='192.168.189.121', port=443) at 0x29da47f5820&gt;, 'Connection to 192.168.189.121 timed out. (connect timeout=None)')': /mgmt/v1/healthstatus/ishealthy</msg>
+<msg time="2026-04-23T09:53:51.818440" level="WARN">Retrying (RetryAdapter(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(&lt;HTTPSConnection(host='192.168.189.121', port=443) at 0x29da5239700&gt;, 'Connection to 192.168.189.121 timed out. (connect timeout=None)')': /mgmt/v1/healthstatus/ishealthy</msg>
+<msg time="2026-04-23T09:53:57.149815" level="WARN">Retrying (RetryAdapter(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPSConnection(host='192.168.189.121', port=443): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it")': /mgmt/v1/healthstatus/ishealthy</msg>
+<msg time="2026-04-23T09:54:01.257727" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPSConnection(host='192.168.189.121', port=443): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it")': /mgmt/v1/healthstatus/ishealthy</msg>
+<msg time="2026-04-23T09:54:03.508632" level="WARN">Retrying (RetryAdapter(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPSConnection(host='192.168.189.121', port=443): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it")': /mgmt/v1/healthstatus/ishealthy</msg>
+</errors>
+</robot>

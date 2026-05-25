@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.12.0 on win32)" generated="2026-04-20T16:09:59.861101" rpa="false" schemaversion="5">
+<suite id="s1" name="Login Test" source="C:\Users\tester\robot-tests\login_test.robot">
+<kw name="Open Browser To Login Page" owner="keywords" type="SETUP">
+<kw name="Set Environment Variable" owner="OperatingSystem">
+<msg time="2026-04-20T16:10:00.060386" level="INFO">Environment variable 'NO_PROXY' set to value '127.0.0.1,localhost'.</msg>
+<arg>NO_PROXY</arg>
+<arg>127.0.0.1,localhost</arg>
+<doc>Sets an environment variable to a specified value.</doc>
+<status status="PASS" start="2026-04-20T16:10:00.060386" elapsed="0.015656"/>
+</kw>
+<kw name="Set Environment Variable" owner="OperatingSystem">
+<msg time="2026-04-20T16:10:00.076042" level="INFO">Environment variable 'NODE_TLS_REJECT_UNAUTHORIZED' set to value '0'.</msg>
+<arg>NODE_TLS_REJECT_UNAUTHORIZED</arg>
+<arg>0</arg>
+<doc>Sets an environment variable to a specified value.</doc>
+<status status="PASS" start="2026-04-20T16:10:00.076042" elapsed="0.000000"/>
+</kw>
+<kw name="New Browser" owner="Browser">
+<msg time="2026-04-20T16:10:00.076042" level="INFO">{"browser": "chromium", "headless": false, "args": ["--ignore-certificate-errors"], "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 2000.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\tester\\robot-tests\\results\\browser\\traces\\temp\\014581d1-439c-4a36-8a3a-e5248d6467cb"}</msg>
+<msg time="2026-04-20T16:10:00.091817" level="INFO">Starting Browser process C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\index.js using at 127.0.0.1:59920</msg>
+<msg time="2026-04-20T16:10:00.792356" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"args":["--ignore-certificate-errors"],"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":2000,"timeout":30000,"tracesDir":"C:\\Users\\tester\\robot-tests\\results\\browser\\traces\\temp\\014581d1-439c-4a36-8a3a-e5248d6467cb"}</msg>
+<arg>${BROWSER}</arg>
+<arg>headless=False</arg>
+<arg>slowMo=2000ms</arg>
+<arg>args=["--ignore-certificate-errors"]</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2026-04-20T16:10:00.076042" elapsed="0.716314"/>
+</kw>
+<kw name="New Context" owner="Browser">
+<msg time="2026-04-20T16:10:00.795610" level="INFO">{
+  "acceptDownloads": true,
+  "bypassCSP": false,
+  "forcedColors": "none",
+  "ignoreHTTPSErrors": true,
+  "javaScriptEnabled": true,
+  "offline": false,
+  "reducedMotion": "no-preference",
+  "serviceWorkers": "allow",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  }
+}</msg>
+<msg time="2026-04-20T16:10:00.803989" level="INFO">Successfully created context. </msg>
+<msg time="2026-04-20T16:10:00.803989" level="INFO">{'acceptDownloads': True, 'bypassCSP': False, 'forcedColors': 'none', 'ignoreHTTPSErrors': True, 'javaScriptEnabled': True, 'offline': False, 'reducedMotion': 'no-preference', 'serviceWorkers': 'allow', 'viewport': {'width': 1280, 'height': 720}}</msg>
+<arg>ignoreHTTPSErrors=True</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new BrowserContext with specified options.</doc>
+<status status="PASS" start="2026-04-20T16:10:00.792356" elapsed="0.011633"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2026-04-20T16:10:03.569947" level="INFO">Successfully initialized new page object and opened url: https://192.168.183.217/login</msg>
+<arg>${LOGIN_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2026-04-20T16:10:00.803989" elapsed="2.765958"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-04-20T16:10:03.589257" level="INFO">Waited for Element with selector id=loginUsernameInput at state visible</msg>
+<arg>${USERNAME_FIELD}</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-04-20T16:10:03.569947" elapsed="0.019310"/>
+</kw>
+<status status="PASS" start="2026-04-20T16:10:00.060386" elapsed="3.528871"/>
+</kw>
+<test id="s1-t1" name="Valid Login And Logout" line="18">
+<kw name="Enter Credentials" owner="keywords">
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-20T16:10:03.589257" level="INFO">Fills the text 'Tester' in the given field.</msg>
+<arg>${USERNAME_FIELD}</arg>
+<arg>${user}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-20T16:10:03.589257" elapsed="2.034447"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-04-20T16:10:05.623704" level="INFO">Clicks the element 'id=loginPasswordInput'.</msg>
+<arg>${PASSWORD_FIELD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-04-20T16:10:05.623704" elapsed="2.030680"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-20T16:10:07.654384" level="INFO">Fills the text 'Matrox1234!' in the given field.</msg>
+<arg>${PASSWORD_FIELD}</arg>
+<arg>${pass}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-20T16:10:07.654384" elapsed="2.019710"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-04-20T16:10:10.674931" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-04-20T16:10:09.674094" elapsed="1.000837"/>
+</kw>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<status status="PASS" start="2026-04-20T16:10:03.589257" elapsed="7.085674"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-04-20T16:10:10.674931" level="INFO">Clicks the element 'css=.mtx-eye-off'.</msg>
+<arg>${EYE_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-04-20T16:10:10.674931" elapsed="2.032710"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-04-20T16:10:13.708315" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-04-20T16:10:12.707641" elapsed="1.000674"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-04-20T16:10:13.708315" level="INFO">Clicks the element 'id=loginButton'.</msg>
+<arg>${LOGIN_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-04-20T16:10:13.708315" elapsed="2.030067"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-04-20T16:10:15.995507" level="INFO">Waited for Element with selector css=.product-name at state visible</msg>
+<arg>${DASHBOARD_HEADER}</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-04-20T16:10:15.738382" elapsed="0.257125"/>
+</kw>
+<kw name="Logout" owner="keywords">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-04-20T16:10:17.996035" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-04-20T16:10:15.995507" elapsed="2.000528"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-04-20T16:10:18.000789" level="INFO">Waited for Element with selector id=headerDropdownButton at state visible</msg>
+<arg>${LOGOUT_MENU}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-04-20T16:10:17.996035" elapsed="0.004754"/>
+</kw>
+<kw name="Highlight Element" owner="keywords">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-04-20T16:10:18.005218" level="INFO">Waited for Element with selector id=headerDropdownButton at state visible</msg>
+<arg>${selector}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-04-20T16:10:18.000789" elapsed="0.004429"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-04-20T16:10:18.024793" level="INFO">JavaScript executed successfully.</msg>
+<arg>${selector}</arg>
+<arg>(element) =&gt; { element.style.border = '3px solid red'; element.style.backgroundColor = 'rgba(255, 255, 0, 0.3)'; element.style.transition = 'all 0.3s'; }</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-04-20T16:10:18.005218" elapsed="0.019575"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-04-20T16:10:18.524891" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-04-20T16:10:18.024793" elapsed="0.500098"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-04-20T16:10:18.529079" level="INFO">JavaScript executed successfully.</msg>
+<arg>${selector}</arg>
+<arg>(element) =&gt; { element.style.border = ''; element.style.backgroundColor = ''; }</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-04-20T16:10:18.524891" elapsed="0.004188"/>
+</kw>
+<arg>${LOGOUT_MENU}</arg>
+<status status="PASS" start="2026-04-20T16:10:18.000789" elapsed="0.528290"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-04-20T16:10:18.529079" level="INFO">Clicks the element 'id=headerDropdownButton'.</msg>
+<arg>${LOGOUT_MENU}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-04-20T16:10:18.529079" elapsed="2.050667"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-04-20T16:10:21.579834" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-04-20T16:10:20.579746" elapsed="1.000088"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-04-20T16:10:21.582843" level="INFO">Waited for Element with selector id=headerMenuItemLogout at state visible</msg>
+<arg>${LOGOUT_BUTTON}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-04-20T16:10:21.579834" elapsed="0.003009"/>
+</kw>
+<kw name="Highlight Element" owner="keywords">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-04-20T16:10:21.582843" level="INFO">Waited for Element with selector id=headerMenuItemLogout at state visible</msg>
+<arg>${selector}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-04-20T16:10:21.582843" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-04-20T16:10:21.595572" level="INFO">JavaScript executed successfully.</msg>
+<arg>${selector}</arg>
+<arg>(element) =&gt; { element.style.border = '3px solid red'; element.style.backgroundColor = 'rgba(255, 255, 0, 0.3)'; element.style.transition = 'all 0.3s'; }</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-04-20T16:10:21.582843" elapsed="0.012729"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-04-20T16:10:22.096922" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-04-20T16:10:21.595971" elapsed="0.500951"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-04-20T16:10:22.105492" level="INFO">JavaScript executed successfully.</msg>
+<arg>${selector}</arg>
+<arg>(element) =&gt; { element.style.border = ''; element.style.backgroundColor = ''; }</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-04-20T16:10:22.096922" elapsed="0.008940"/>
+</kw>
+<arg>${LOGOUT_BUTTON}</arg>
+<status status="PASS" start="2026-04-20T16:10:21.582843" elapsed="0.523019"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-04-20T16:10:22.105862" level="INFO">Clicks the element 'id=headerMenuItemLogout'.</msg>
+<arg>${LOGOUT_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-04-20T16:10:22.105862" elapsed="2.045450"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-04-20T16:10:26.152161" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-04-20T16:10:24.151312" elapsed="2.000849"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-04-20T16:10:26.152161" level="INFO">Waited for Element with selector id=loginUsernameInput at state visible</msg>
+<arg>${USERNAME_FIELD}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-04-20T16:10:26.152161" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2026-04-20T16:10:15.995507" elapsed="10.156654"/>
+</kw>
+<doc>Login with valid credentials, verify dashboard loads, then logout</doc>
+<status status="PASS" start="2026-04-20T16:10:03.589257" elapsed="22.562904"/>
+</test>
+<kw name="Close Browser" owner="Browser" type="TEARDOWN">
+<msg time="2026-04-20T16:10:26.317829" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-04-20T16:10:26.160762" elapsed="0.157067"/>
+</kw>
+<status status="PASS" start="2026-04-20T16:09:59.861101" elapsed="26.456728"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Login Test" id="s1" pass="1" fail="0" skip="0">Login Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

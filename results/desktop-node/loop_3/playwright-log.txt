@@ -1,0 +1,88 @@
+{"level":30,"time":"2026-04-14T16:52:10.774Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Listening on 127.0.0.1:53015"}
+{"level":30,"time":"2026-04-14T16:52:11.287Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Start of node method newBrowser"}
+{"level":30,"time":"2026-04-14T16:52:11.470Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Adding browser to stack: chromium, version: 145.0.7632.6"}
+{"level":30,"time":"2026-04-14T16:52:11.471Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Adding 0 contexts to browser"}
+{"level":30,"time":"2026-04-14T16:52:11.471Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"End of node method newBrowser"}
+{"level":30,"time":"2026-04-14T16:52:11.481Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Start of node method newContext"}
+{"level":30,"time":"2026-04-14T16:52:11.482Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Creating new context with options: {\"acceptDownloads\":true,\"bypassCSP\":false,\"forcedColors\":\"none\",\"ignoreHTTPSErrors\":true,\"javaScriptEnabled\":true,\"offline\":false,\"reducedMotion\":\"no-preference\",\"serviceWorkers\":\"allow\",\"viewport\":{\"width\":1280,\"height\":720}}"}
+{"level":30,"time":"2026-04-14T16:52:11.482Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"currentBrowser: {\"name\":\"chromium\",\"browser\":{\"_type\":\"Browser\",\"_guid\":\"browser@a7772b2b3b37c7af7f4c6e0e8b57fc85\"},\"headless\":false,\"_contextStack\":[],\"id\":\"browser=5b8aaf39-ab6e-4caf-b873-3d37a9f1b2a0\"}"}
+{"level":30,"time":"2026-04-14T16:52:11.482Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Trace file: "}
+{"level":30,"time":"2026-04-14T16:52:11.499Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Setting default timeout for context context=8bbe8a02-a5ae-4c7c-a8c3-90432b03b214 to 10000"}
+{"level":30,"time":"2026-04-14T16:52:11.499Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Changed active context: context=8bbe8a02-a5ae-4c7c-a8c3-90432b03b214"}
+{"level":30,"time":"2026-04-14T16:52:11.499Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"End of node method newContext"}
+{"level":30,"time":"2026-04-14T16:52:11.505Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Start of node method newPage"}
+{"level":30,"time":"2026-04-14T16:52:11.505Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"currentBrowser: {\"name\":\"chromium\",\"browser\":{\"_type\":\"Browser\",\"_guid\":\"browser@a7772b2b3b37c7af7f4c6e0e8b57fc85\"},\"headless\":false,\"_contextStack\":[{\"id\":\"context=8bbe8a02-a5ae-4c7c-a8c3-90432b03b214\",\"c\":{\"_type\":\"BrowserContext\",\"_guid\":\"browser-context@5522a6fa9ddd349e1c8f9aaeb0030b0d\"},\"pageStack\":[],\"options\":{\"acceptDownloads\":true,\"bypassCSP\":false,\"forcedColors\":\"none\",\"ignoreHTTPSErrors\":true,\"javaScriptEnabled\":true,\"offline\":false,\"reducedMotion\":\"no-preference\",\"serviceWorkers\":\"allow\",\"viewport\":{\"width\":1280,\"height\":720}},\"traceFile\":\"\"}],\"id\":\"browser=5b8aaf39-ab6e-4caf-b873-3d37a9f1b2a0\"}"}
+{"level":30,"time":"2026-04-14T16:52:11.659Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Video path: undefined"}
+{"level":30,"time":"2026-04-14T16:52:11.659Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Changed active page"}
+{"level":30,"time":"2026-04-14T16:52:14.274Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"End of node method newPage"}
+{"level":30,"time":"2026-04-14T16:52:14.278Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Start of node method waitForElementState"}
+{"level":30,"time":"2026-04-14T16:52:14.278Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Strict mode is enabled, find Locator with id=loginUsernameInput in page."}
+{"level":30,"time":"2026-04-14T16:52:14.301Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"End of node method waitForElementState"}
+{"level":30,"time":"2026-04-14T16:52:14.306Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2026-04-14T16:52:14.308Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2026-04-14T16:52:14.331Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2026-04-14T16:52:14.334Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2026-04-14T16:52:14.341Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Start of node method goTo"}
+{"level":30,"time":"2026-04-14T16:52:15.909Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Removed page=a2077e13-7d42-41d1-99cf-95cf70943ff7 from context=8bbe8a02-a5ae-4c7c-a8c3-90432b03b214 page stack"}
+{"level":30,"time":"2026-04-14T16:52:16.022Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Start of node method takeScreenshot"}
+================= Original suppressed error =================
+Error: Tried to take screenshot, but no page was open.
+    at exists (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\index.js:10997:11)
+    at takeScreenshot (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\index.js:11158:3)
+    at PlaywrightServer.takeScreenshot (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\index.js:13690:34)
+    at Object.onReceiveHalfClose (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server.js:1464:25)
+    at BaseServerInterceptingCall.maybePushNextMessage (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:595:31)
+    at BaseServerInterceptingCall.handleEndEvent (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:635:14)
+    at ServerHttp2Stream.<anonymous> (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:394:18)
+    at ServerHttp2Stream.emit (node:events:520:35)
+    at endReadableNT (node:internal/streams/readable:1729:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+=============================================================
+{"level":30,"time":"2026-04-14T16:52:16.022Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Error of node method  takeScreenshot"}
+{"level":30,"time":"2026-04-14T16:52:16.038Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Start of node method takeScreenshot"}
+================= Original suppressed error =================
+Error: Tried to take screenshot, but no page was open.
+    at exists (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\index.js:10997:11)
+    at takeScreenshot (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\index.js:11158:3)
+    at PlaywrightServer.takeScreenshot (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\index.js:13690:34)
+    at Object.onReceiveHalfClose (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server.js:1464:25)
+    at BaseServerInterceptingCall.maybePushNextMessage (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:595:31)
+    at BaseServerInterceptingCall.handleEndEvent (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:635:14)
+    at ServerHttp2Stream.<anonymous> (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:394:18)
+    at ServerHttp2Stream.emit (node:events:520:35)
+    at endReadableNT (node:internal/streams/readable:1729:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+=============================================================
+{"level":30,"time":"2026-04-14T16:52:16.038Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Error of node method  takeScreenshot"}
+{"level":30,"time":"2026-04-14T16:52:16.042Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Start of node method takeScreenshot"}
+================= Original suppressed error =================
+Error: Tried to take screenshot, but no page was open.
+    at exists (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\index.js:10997:11)
+    at takeScreenshot (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\index.js:11158:3)
+    at PlaywrightServer.takeScreenshot (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\index.js:13690:34)
+    at Object.onReceiveHalfClose (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server.js:1464:25)
+    at BaseServerInterceptingCall.maybePushNextMessage (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:595:31)
+    at BaseServerInterceptingCall.handleEndEvent (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:635:14)
+    at ServerHttp2Stream.<anonymous> (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:394:18)
+    at ServerHttp2Stream.emit (node:events:520:35)
+    at endReadableNT (node:internal/streams/readable:1729:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+=============================================================
+{"level":30,"time":"2026-04-14T16:52:16.042Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Error of node method  takeScreenshot"}
+{"level":30,"time":"2026-04-14T16:52:16.052Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2026-04-14T16:52:16.052Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2026-04-14T16:52:16.057Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"Start of node method closeBrowser"}
+{"level":30,"time":"2026-04-14T16:52:16.059Z","pid":20816,"hostname":"DESKTOP-FVFKDDN","msg":"End of node method closeBrowser"}
+================= Original suppressed error =================
+Error: Browser has been closed.
+    at PlaywrightState.getActiveBrowser (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\index.js:12757:15)
+    at PlaywrightServer.getActiveBrowser (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\index.js:13677:59)
+    at PlaywrightServer.setTimeout (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\index.js:13933:56)
+    at Object.onReceiveHalfClose (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server.js:1464:25)
+    at BaseServerInterceptingCall.maybePushNextMessage (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:595:31)
+    at BaseServerInterceptingCall.handleEndEvent (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:635:14)
+    at ServerHttp2Stream.<anonymous> (C:\Users\tester\robot-tests\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:394:18)
+    at ServerHttp2Stream.emit (node:events:520:35)
+    at endReadableNT (node:internal/streams/readable:1729:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+=============================================================
